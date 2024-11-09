@@ -1,7 +1,6 @@
 import streamlit as st
 import pandas as pd
 import json
-import re
 
 from graphs import *
 from chat import *
@@ -146,7 +145,7 @@ def main():
         show_table(st.session_state["main_option"])
     else:
         # call api for st.session_state["main_option"]
-        # write answer in info.json
+        # write answer in info.json 
         show_all_info()
     
 if __name__ == "__main__":
