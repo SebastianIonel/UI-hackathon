@@ -1,0 +1,23 @@
+[
+    {
+      "Company": "Company_D",
+      "Description": "Company_D, operating in the Energy sector, shows consistent revenue growth and improving gross profit margins. However, its high debt-to-equity ratio and relatively low return on assets indicate potential financial instability. Immediate actions are required to manage debt and improve asset utilization.",
+      "Score": -90
+    },
+    {
+      "Company": "Company_C",
+      "Description": "Company_C, in the Consumer Goods industry, demonstrates steady revenue growth and improving profit margins. While its financial indicators are generally positive, the debt-to-equity ratio suggests a need for careful debt management to ensure long-term stability.",
+      "Score": -70
+    },
+    {
+      "Company": "Company_B",
+      "Description": "Company_B, a Healthcare company, shows strong revenue growth and healthy profit margins. Its financial indicators, including a low debt-to-equity ratio and solid return on assets, suggest good financial health with minimal immediate actions required.",
+      "Score": 70
+    },
+    {
+      "Company": "Company_A",
+      "Description": "Company_A, in the Technology sector, exhibits consistent revenue growth and stable profit margins. With a strong current ratio and manageable debt levels, the company is financially stable and well-positioned for future growth.",
+      "Score": 90
+    }
+  ]
+  
