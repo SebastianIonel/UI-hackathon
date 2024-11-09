@@ -8,6 +8,7 @@ global main_option
 # Function to create the slidable menu
 def slidable_menu():
     # Inject custom CSS to style the sidebar and selectbox
+    global main_option
     st.markdown(
         """
         <style>
@@ -30,7 +31,7 @@ def slidable_menu():
         st.title("Right-Hand Menu")
         st.write("This is a slidable right-hand menu.")
         
-        main_option = st.selectbox("Choose a main option", ["A", "B", "C", "D"])
+        main_option = st.selectbox("Choose a main option", ["Overall", "A", "B", "C", "D"])
         
         if main_option == "A":
             sub_option = st.selectbox("Choose a sub-option for A", ["A1", "A2", "A3"])
@@ -77,7 +78,7 @@ def main():
                 border-radius: 10px;
                 overflow: hidden;
                 width: 100%;
-                margin: 20px 0;
+                margin: 50px 0;
                 box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             }
             .dataframe th, .dataframe td {
