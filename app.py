@@ -5,6 +5,9 @@ import json
 global companies
 global main_option
 global number_of_companies
+global showed_companies
+global number_of_showed_companies
+
 
 # Function to create the slidable menu
 def slidable_menu():
@@ -45,6 +48,7 @@ def slidable_menu():
         
         st.button("Click me")
 
+
 def get_companies_color():
     green = 0
     red = 0
@@ -58,21 +62,23 @@ def get_companies_color():
 
 def create_table(n):
     global companies
-    companies.sort(key=lambda x: x["Score"], reverse=True)
+    global showed_companies
+
+    showed_companies.sort(key=lambda x: x["Score"], reverse=True)
     data = {
-        "Name": [f"<b>{companies[i]['Company']}</b>" for i in range(n)],
-        "Score": [f"{companies[i]['Score']}" for i in range(n)],
-        "Description": [f"{companies[i]['Description']}" for i in range(n)]
+        "Name": [f"<b>{showed_companies[i]['Company']}</b>" for i in range(n)],
+        "Score": [f"{showed_companies[i]['Score']}" for i in range(n)],
+        "Description": [f"{showed_companies[i]['Description']}" for i in range(n)]
     }
     df = pd.DataFrame(data)
     return df
 
 
 def show_table():
-    global number_of_companies
+    global number_of_showed_companies
     st.write("You have selected the Overall option.")
           
-    df = create_table(number_of_companies)
+    df = create_table(number_of_showed_companies)
 
     number_of_green, number_of_read = get_companies_color();
 
@@ -118,6 +124,7 @@ def show_table():
 def get_companies():
 
     global companies
+    global number_of_companies
 
     # populate file
     # TODO
@@ -128,7 +135,8 @@ def get_companies():
     # Open and load the JSON file
     with open(file_path, 'r') as file:
         companies = json.load(file)
-
+        number_of_companies = companies.__len__()
+        
 def send_message():
     user_input = st.session_state["text_input_for_chat"]
     if user_input:
@@ -165,17 +173,27 @@ def show_chatbox():
         for message in st.session_state["chat_history"]:
             st.markdown(f"<div style='text-align: left; color: black;'>{message}</div>", unsafe_allow_html=True)
 
-
+def add_company(company):
+    global showed_companies
+    global number_of_showed_companies
+    for i in range(number_of_showed_companies):
+        if companies[i]["Company"] == company:
+            showed_companies.append(companies[i])
+            break
 
 
 # Main function to run the Streamlit app
 def main():
     st.title("TITLE")
     global number_of_companies
-    number_of_companies = 4
+    global showed_companies
+    global number_of_showed_companies
+
+    showed_companies = []
+    number_of_showed_companies = showed_companies.__len__()
+    
     slidable_menu()
     show_chatbox()
-    
     get_companies()
     if main_option == "Overall":
         show_table()
