@@ -2,6 +2,9 @@ import streamlit as st
 import pandas as pd
 import json
 
+from graphs import *
+from chat import *
+
 # Initialize session state variables
 if "companies" not in st.session_state:
     st.session_state["companies"] = []
@@ -9,8 +12,6 @@ if "main_option" not in st.session_state:
     st.session_state["main_option"] = None
 if "showed_companies" not in st.session_state:
     st.session_state["showed_companies"] = []
-if "chat_history" not in st.session_state:
-    st.session_state["chat_history"] = []
 
 # Function to create the slidable menu
 def slidable_menu():
@@ -118,30 +119,6 @@ def get_companies():
     except FileNotFoundError:
         st.error("The 'input.json' file was not found.")
 
-def send_message():
-    user_input = st.session_state["text_input_for_chat"]
-    if user_input:
-        st.session_state["chat_history"].append(f"You: {user_input}")
-        st.session_state["chat_history"].append(f"ChatGPT: Your message '{user_input}' was received!")
-        st.session_state["input"] = ""
-
-def show_chatbox():
-    st.markdown("<h3 style='text-align: center;'>Chat Box</h3>", unsafe_allow_html=True)
-    chat_history_placeholder = st.empty()
-    user_input = st.text_input("Start conversation", key="text_input_for_chat", on_change=send_message, autocomplete="off")
-    
-    col1, col2 = st.columns([1, 1])
-    with col1:
-        if st.button("Send"):
-            send_message()
-    with col2:
-        if st.button("Clear History"):
-            st.session_state["chat_history"] = []
-    
-    with chat_history_placeholder.container():
-        for message in st.session_state["chat_history"]:
-            st.markdown(f"<div style='text-align: left; color: black;'>{message}</div>", unsafe_allow_html=True)
-
 def add_company(company):
     for elem in st.session_state["companies"]:
         if elem["Company"] == company:
@@ -155,6 +132,8 @@ def main():
     show_chatbox()
     if st.session_state["main_option"] == "Overall":
         show_table()
+        
+    show_revenue_net_income_chart()
 
 if __name__ == "__main__":
     main()
