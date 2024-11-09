@@ -13,6 +13,7 @@ global number_of_showed_companies
 def slidable_menu():
     # Inject custom CSS to style the sidebar and selectbox
     global main_option
+    global companies
     st.markdown(
         """
         <style>
@@ -36,8 +37,28 @@ def slidable_menu():
         # st.write("This is a slidable right-hand menu.")
         
         main_option = st.selectbox("Choose a main option", ["Overall", "A", "B", "C", "D"])
-        
-        if main_option == "A":
+
+        result = None
+        if main_option == "Overall":
+            query = st.text_input("Enter company name to search:")
+            # Filter companies based on search query
+            if query:
+                # Case-insensitive search
+                for elem in companies:
+                    if elem['Company'].lower() == query.lower():
+                        result = elem['Company']
+                        add_company(result)
+                        break
+                if result:
+                    st.write("Search Result:")
+                    st.write(f"- {result}")
+                else:
+                    st.write("No results found.")
+            else:
+                st.write("Please enter a search query to see results.")
+
+
+        elif main_option == "A":
             sub_option = st.selectbox("Choose a sub-option for A", ["A1", "A2", "A3"])
         elif main_option == "B":
             sub_option = st.selectbox("Choose a sub-option for B", ["B1", "B2"])
@@ -47,7 +68,6 @@ def slidable_menu():
             sub_option = st.selectbox("Choose a sub-option for D", ["D1", "D2", "D3", "D4", "D5"])
         
         st.button("Click me")
-
 
 def get_companies_color():
     green = 0
@@ -136,7 +156,7 @@ def get_companies():
     with open(file_path, 'r') as file:
         companies = json.load(file)
         number_of_companies = companies.__len__()
-        
+
 def send_message():
     user_input = st.session_state["text_input_for_chat"]
     if user_input:
@@ -179,6 +199,7 @@ def add_company(company):
     for i in range(number_of_showed_companies):
         if companies[i]["Company"] == company:
             showed_companies.append(companies[i])
+            show_table()
             break
 
 
@@ -191,10 +212,12 @@ def main():
 
     showed_companies = []
     number_of_showed_companies = showed_companies.__len__()
-    
+    get_companies()
+
+
+
     slidable_menu()
     show_chatbox()
-    get_companies()
     if main_option == "Overall":
         show_table()
 
