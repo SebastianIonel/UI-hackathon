@@ -1,78 +1,30 @@
 [
-    {
-      "Company": "Company_D",
-      "Description": "Company_D, operating in the Energy sector, shows consistent revenue growth and improving gross profit margins. However, its high debt-to-equity ratio and relatively low return on assets indicate potential financial instability. Immediate actions are required to manage debt and improve asset utilization.",
-      "Score": -90
-    },
-    {
-      "Company": "Company_C",
-      "Description": "Company_C, in the Consumer Goods industry, demonstrates steady revenue growth and improving profit margins. While its financial indicators are generally positive, the debt-to-equity ratio suggests a need for careful debt management to ensure long-term stability.",
-      "Score": -70
-    },
-    {
-      "Company": "Company_B",
-      "Description": "Company_B, a Healthcare company, shows strong revenue growth and healthy profit margins. Its financial indicators, including a low debt-to-equity ratio and solid return on assets, suggest good financial health with minimal immediate actions required.",
-      "Score": 70
-    },
-    {
-      "Company": "Company_A",
-      "Description": "Company_A, in the Technology sector, exhibits consistent revenue growth and stable profit margins. With a strong current ratio and manageable debt levels, the company is financially stable and well-positioned for future growth.",
-      "Score": 90
-    },
-    {
-      "Company": "Company_E",
-      "Description": "Company_E, a Financial Services firm, shows steady revenue growth and stable profit margins. The low debt-to-equity ratio reflects conservative financial management, though there is room to improve asset utilization.",
-      "Score": 65
-    },
-    {
-      "Company": "Company_F",
-      "Description": "Company_F, operating in the Telecommunications industry, has a strong cash flow and a manageable debt load. However, recent fluctuations in profit margins indicate the need for expense management.",
-      "Score": 55
-    },
-    {
-      "Company": "Company_G",
-      "Description": "Company_G, a Transportation company, exhibits consistent revenue growth but faces challenges with high operating costs. Improving efficiency could help enhance profitability in the coming quarters.",
-      "Score": -30
-    },
-    {
-      "Company": "Company_H",
-      "Description": "Company_H, within the Retail sector, demonstrates solid growth with improved inventory turnover and customer engagement. However, a slightly elevated debt-to-equity ratio calls for prudent financial planning.",
-      "Score": 40
-    },
-    {
-      "Company": "Company_I",
-      "Description": "Company_I, in the Pharmaceuticals industry, maintains strong revenue and exceptional R&D investment. However, rising production costs suggest a need to control expenses to preserve profit margins.",
-      "Score": 75
-    },
-    {
-      "Company": "Company_J",
-      "Description": "Company_J, a Utilities provider, benefits from stable revenue due to long-term contracts. The company’s high leverage is common in the industry but should be carefully monitored.",
-      "Score": 20
-    },
-    {
-      "Company": "Company_K",
-      "Description": "Company_K, in the Media industry, shows significant revenue from digital channels. However, high acquisition costs have impacted profit margins, necessitating a focus on organic growth.",
-      "Score": -10
-    },
-    {
-      "Company": "Company_L",
-      "Description": "Company_L, an Aerospace company, displays strong revenue and profitable government contracts. However, a high debt ratio could pose risks if revenue growth slows.",
-      "Score": 30
-    },
-    {
-      "Company": "Company_M",
-      "Description": "Company_M, in the Automotive sector, is experiencing growth driven by electric vehicle sales. Strong revenue potential exists, though high R&D expenses are impacting short-term profitability.",
-      "Score": 50
-    },
-    {
-      "Company": "Company_N",
-      "Description": "Company_N, a Real Estate firm, benefits from rising property values. Low debt and high liquidity position the company for expansion, but fluctuating rental income needs attention.",
-      "Score": 60
-    },
-    {
-      "Company": "Company_O",
-      "Description": "Company_O, in the Construction industry, has a strong order backlog and improving profit margins. However, high operating costs and debt levels require careful management to sustain growth.",
-      "Score": 25
-    }
+  {
+  "Company": "Company_D",
+  "Description": "Company_D has shown consistent revenue growth and maintains a healthy gross profit margin. However, its debt-to-equity ratio is relatively high, indicating a higher level of financial leverage. The company is in a stable position but should monitor its debt levels closely.",
+  "NEmployees": 5000,
+  "RiskClass": "High Risk",
+  "Score": -70
+  },
+  {
+  "Company": "Company_C",
+  "Description": "Company_C has demonstrated steady revenue growth and improving profit margins. The company's financial ratios indicate a stable and growing business, though it should continue to manage its debt levels to maintain financial health.",
+  "NEmployees": 3000,
+  "RiskClass": "Medium Risk",
+  "Score": -50
+  },
+  {
+  "Company": "Company_B",
+  "Description": "Company_B has shown consistent revenue growth and strong profit margins. The company's financial ratios indicate a stable and healthy business with manageable debt levels. It is well-positioned for future growth.",
+  "NEmployees": 800,
+  "RiskClass": "Medium Opportunity",
+  "Score": 50
+  },
+  {
+  "Company": "Company_A",
+  "Description": "Company_A has demonstrated strong revenue growth and maintains healthy profit margins. The company's financial ratios indicate a stable and growing business with manageable debt levels. It is well-positioned for future growth.",
+  "NEmployees": 1500,
+  "RiskClass": "High Opportunity",
+  "Score": 70
+  }
   ]
-  
