@@ -60,9 +60,9 @@ def create_table(n):
     global companies
     companies.sort(key=lambda x: x["Score"], reverse=True)
     data = {
-        "Name": [f"<b>{companies[i]["Company"]}</b>" for i in range(n)],
-        "Score": [f"{companies[i]["Score"]}" for i in range(n)],
-        "Description": [f"{companies[i]["Description"]}" for i in range(n)]
+        "Name": [f"<b>{companies[i]['Company']}</b>" for i in range(n)],
+        "Score": [f"{companies[i]['Score']}" for i in range(n)],
+        "Description": [f"{companies[i]['Description']}" for i in range(n)]
     }
     df = pd.DataFrame(data)
     return df
@@ -129,6 +129,12 @@ def get_companies():
     with open(file_path, 'r') as file:
         companies = json.load(file)
 
+def send_message():
+    user_input = st.session_state["text_input_for_chat"]
+    if user_input:
+        st.session_state["chat_history"].append(f"You: {user_input}")
+        st.session_state["chat_history"].append(f"ChatGPT: Your message '{user_input}' was received!")
+        st.session_state["input"] = ""  # Clear the input field after sending
 
 def show_chatbox():
     # Initialize session state for storing chat messages if not already initialized
@@ -142,16 +148,12 @@ def show_chatbox():
     chat_history_placeholder = st.empty()    
 
     # User input and send button
-    user_input = st.text_input("Start conversation", key="text_input_for_chat", autocomplete="off")
+    user_input = st.text_input("Start conversation", key="text_input_for_chat", on_change=send_message, autocomplete="off")
     col1, col2 = st.columns([1, 1])
     
     with col1:
         if st.button("Send"):
-            # If there's input, add it to the chat history
-            if user_input:
-                st.session_state["chat_history"].append(f"You: {user_input}")
-                st.session_state["chat_history"].append(f"ChatGPT: Your message '{user_input}' was received!")
-                st.session_state["input"] = ""  # Clear the input field after sending
+            send_message()
 
     with col2:
         if st.button("Clear History"):
