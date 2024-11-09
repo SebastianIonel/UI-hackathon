@@ -36,7 +36,8 @@ def slidable_menu():
         st.image("logo1.png", use_container_width=True)
         st.title("Choose company to inspect")
         
-        st.session_state["main_option"] = st.selectbox("Choose a main option", ["Followed", "All", "B", "C", "D"])
+        st.session_state["main_option"] = st.selectbox("Choose a main option", ["Followed", "All"] + 
+                                                [elem["Company"] for elem in st.session_state["showed_companies"]])
         
         result = None
         if st.session_state["main_option"] == "Followed":
