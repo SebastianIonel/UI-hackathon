@@ -2,7 +2,7 @@ import streamlit as st
 
 # Function to create the slidable menu
 def slidable_menu():
-    # Inject custom CSS to style the sidebar
+    # Inject custom CSS to style the sidebar and selectbox
     st.markdown(
         """
         <style>
@@ -11,8 +11,9 @@ def slidable_menu():
             border: 1px solid black;
             color: black;
         }
-        [data-testid="stSidebar"] .css-1d391kg {
-            color: black;
+        [data-testid="stSidebar"] img {
+            max-width: 150px;
+            height: auto;
         }
         </style>
         """,
@@ -20,6 +21,7 @@ def slidable_menu():
     )
     
     with st.sidebar:
+        st.image("logo1.png", use_container_width=True)
         st.title("Right-Hand Menu")
         st.write("This is a slidable right-hand menu.")
         
