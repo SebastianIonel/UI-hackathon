@@ -1,8 +1,14 @@
 import streamlit as st
+import pandas as pd
+
+global companies
+global main_option
+global number_of_companies
 
 # Function to create the slidable menu
 def slidable_menu():
     # Inject custom CSS to style the sidebar and selectbox
+    global main_option
     st.markdown(
         """
         <style>
@@ -22,10 +28,10 @@ def slidable_menu():
     
     with st.sidebar:
         st.image("logo1.png", use_container_width=True)
-        st.title("Right-Hand Menu")
-        st.write("This is a slidable right-hand menu.")
+        st.title("Choose company to inspect")
+        # st.write("This is a slidable right-hand menu.")
         
-        main_option = st.selectbox("Choose a main option", ["A", "B", "C", "D"])
+        main_option = st.selectbox("Choose a main option", ["Overall", "A", "B", "C", "D"])
         
         if main_option == "A":
             sub_option = st.selectbox("Choose a sub-option for A", ["A1", "A2", "A3"])
@@ -38,11 +44,106 @@ def slidable_menu():
         
         st.button("Click me")
 
+
+def create_table(n):
+    global companies
+    companies = [("A", 5, "Compania A este cea mai buna"), ("B", 3, "Compania e cea s"), ("C", 7, "Compania e cea s"), ("D", 4, "Compania e cea ssdadsa")]
+    companies.sort(key=lambda x: x[1], reverse=True)
+    data = {
+        "Name": [f"<b>{companies[i][0]}</b>" for i in range(n)],
+        "Score": [f"{companies[i][1]}" for i in range(n)],
+        "Description": [f"{companies[i][2]}" for i in range(n)]
+    }
+    df = pd.DataFrame(data)
+    return df
+
+
+def show_table():
+    global number_of_companies
+    st.write("You have selected the Overall option.")
+          
+    df = create_table(number_of_companies)
+
+    # Apply custom CSS to style the table
+    st.markdown(
+        """
+        <style>
+        .dataframe {
+            border: 2px solid #000;
+            border-radius: 10px;
+            overflow: hidden;
+            width: 100%;
+            margin: 50px 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .dataframe th, .dataframe td {
+            padding: 12px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+        }
+        .dataframe th {
+            background-color: yellow;
+            color: black;
+            font-weight: bold;
+        }
+        .dataframe tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        .dataframe tr:hover {
+            background-color: #ddd;
+        }
+        </style>
+        """,
+        unsafe_allow_html=True
+    )
+    # Display the table with HTML rendering
+    st.markdown(df.to_html(escape=False, index=False), unsafe_allow_html=True)
+
+
+def show_chatbox():
+    # Initialize session state for storing chat messages if not already initialized
+    if "chat_history" not in st.session_state:
+        st.session_state["chat_history"] = []
+    
+    # Display chat box title
+    st.markdown("<h3 style='text-align: center;'>Chat Box</h3>", unsafe_allow_html=True)
+
+    # Placeholder for chat history, placed above the input box
+    chat_history_placeholder = st.empty()    
+
+    # User input and send button
+    user_input = st.text_input("Start conversation", key="text_input_for_chat", autocomplete="off")
+    col1, col2 = st.columns([1, 1])
+    
+    with col1:
+        if st.button("Send"):
+            # If there's input, add it to the chat history
+            if user_input:
+                st.session_state["chat_history"].append(f"You: {user_input}")
+                st.session_state["chat_history"].append(f"ChatGPT: Your message '{user_input}' was received!")
+                st.session_state["input"] = ""  # Clear the input field after sending
+
+    with col2:
+        if st.button("Clear History"):
+            # Clear the chat history after the animation
+            st.session_state["chat_history"] = []
+
+    # Render the chat history in the placeholder
+    with chat_history_placeholder.container():
+        for message in st.session_state["chat_history"]:
+            st.markdown(f"<div style='text-align: left; color: black;'>{message}</div>", unsafe_allow_html=True)
+
 # Main function to run the Streamlit app
 def main():
-    st.title("Main Page")
-    st.write("This is the main content of the page.")
+    st.title("TITLE")
+    global number_of_companies
+    number_of_companies = 4
     slidable_menu()
+    
+    if main_option == "Overall":
+        show_table()
+    
+    show_chatbox()
 
 if __name__ == "__main__":
     main()
