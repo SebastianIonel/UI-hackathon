@@ -2,6 +2,10 @@ import plotly.express as px
 import streamlit as st
 import pandas as pd
 import json
+import re
+from key import generate_key
+
+
 
 def show_revenue_net_income_chart():
     # Load data from info.json
@@ -22,7 +26,7 @@ def show_revenue_net_income_chart():
 
     # Create a line chart using Plotly
     fig = px.line(df, x="Year", y=["Revenue", "Net Income"], title="Revenue and Net Income Over Time", labels={"value": "Amount", "variable": "Metric"})
-    st.plotly_chart(fig)
+    st.plotly_chart(fig, key=generate_key())
 
 # Function to show the profit margins chart
 def show_profit_margins_chart():
@@ -50,7 +54,7 @@ def show_profit_margins_chart():
     # Create a stacked bar chart using Plotly
     fig = px.bar(df_melted, x="Year", y="Percentage", color="Margin Type", barmode="group",
                  title="Profit Margins Over Time", labels={"Percentage": "Percentage (%)", "Margin Type": "Profit Margin Type"})
-    st.plotly_chart(fig)
+    st.plotly_chart(fig, key=generate_key())
 
 def show_liquidity_leverage_chart():
     # Load data from info.json
@@ -75,4 +79,21 @@ def show_liquidity_leverage_chart():
     # Create a line chart using Plotly
     fig = px.line(df_melted, x="Year", y="Value", color="Ratio Type", 
                   title="Liquidity and Leverage Ratios Over Time", labels={"Value": "Ratio", "Ratio Type": "Ratio Type"})
-    st.plotly_chart(fig)
+    st.plotly_chart(fig, key=generate_key())
+
+def show_all_info():
+    with open('text.json', 'r') as file:
+        data = json.load(file)
+    text = data['text']
+    sections = re.split(r"INSERT_GRAPH\(\w+\)", text)
+    graphs = re.findall(r"INSERT_GRAPH\((\w+)\)", text)
+    for i, section in enumerate(sections):
+        st.markdown(section)
+        if i < len(sections) - 1:
+            graph_name = graphs[i].replace("INSERT_GRAPH(", "").replace(")", "") 
+            if graph_name == "rniot":
+                show_revenue_net_income_chart()
+            elif graph_name == "pmt":
+                show_profit_margins_chart()
+            elif graph_name == "llrot":
+                show_liquidity_leverage_chart()
