@@ -36,10 +36,11 @@ def slidable_menu():
         st.image("logo1.png", use_container_width=True)
         st.title("Choose company to inspect")
         
-        st.session_state["main_option"] = st.selectbox("Choose a main option", ["Overall", "A", "B", "C", "D"])
+        st.session_state["main_option"] = st.selectbox("Choose a main option", ["Followed", "All"] + 
+                                                [elem["Company"] for elem in st.session_state["showed_companies"]])
         
         result = None
-        if st.session_state["main_option"] == "Overall":
+        if st.session_state["main_option"] == "Followed":
             query = st.text_input("Enter company name to search:")
             if query:
                 for elem in st.session_state["companies"]:
@@ -64,8 +65,8 @@ def get_companies_color():
             red += 1
     return green, red
 
-def create_table():
-    sorted_showed = sorted(st.session_state["showed_companies"], key=lambda x: x["Score"], reverse=True)
+def create_table(show_input):
+    sorted_showed = sorted(show_input, key=lambda x: x["Score"], reverse=True)
     data = {
         "Name": [f"<b>{c['Company']}</b>" for c in sorted_showed],
         "Score": [f"{c['Score']}" for c in sorted_showed],
@@ -73,11 +74,16 @@ def create_table():
     }
     return pd.DataFrame(data)
 
-def show_table():
-    st.write("You have selected the Overall option.")
-    df = create_table()
-    green, red = get_companies_color()
-
+def show_table(option):
+    st.write("You have selected the Followed option.")
+    
+    if option == "Followed":
+        green, red = get_companies_color()
+        df = create_table(st.session_state["showed_companies"])
+    else: 
+        green, red = 0, 0
+        df = create_table(st.session_state["companies"])
+    
     css = f"""
     <style>
     .dataframe {{
@@ -120,6 +126,9 @@ def get_companies():
         st.error("The 'input.json' file was not found.")
 
 def add_company(company):
+    for elem in st.session_state["showed_companies"]:
+        if elem["Company"] == company:
+            return
     for elem in st.session_state["companies"]:
         if elem["Company"] == company:
             st.session_state["showed_companies"].append(elem)
@@ -130,8 +139,8 @@ def main():
     get_companies()
     slidable_menu()
     show_chatbox()
-    if st.session_state["main_option"] == "Overall":
-        show_table()
+    if st.session_state["main_option"] == "Followed" or st.session_state["main_option"] == "All":
+        show_table(st.session_state["main_option"])
         
     show_revenue_net_income_chart()
 
