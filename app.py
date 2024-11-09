@@ -174,11 +174,11 @@ def main():
     global number_of_companies
     number_of_companies = 4
     slidable_menu()
+    show_chatbox()
+    
     get_companies()
     if main_option == "Overall":
         show_table()
-    
-    show_chatbox()
 
 
 
