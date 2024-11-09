@@ -3,7 +3,7 @@ import pandas as pd
 
 global companies
 global main_option
-
+global number_of_companies
 
 # Function to create the slidable menu
 def slidable_menu():
@@ -57,54 +57,59 @@ def create_table(n):
     df = pd.DataFrame(data)
     return df
 
+
+def show_table():
+    global number_of_companies
+    st.write("You have selected the Overall option.")
+          
+    df = create_table(number_of_companies)
+
+    # Apply custom CSS to style the table
+    st.markdown(
+        """
+        <style>
+        .dataframe {
+            border: 2px solid #000;
+            border-radius: 10px;
+            overflow: hidden;
+            width: 100%;
+            margin: 50px 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .dataframe th, .dataframe td {
+            padding: 12px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+        }
+        .dataframe th {
+            background-color: yellow;
+            color: black;
+            font-weight: bold;
+        }
+        .dataframe tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        .dataframe tr:hover {
+            background-color: #ddd;
+        }
+        </style>
+        """,
+        unsafe_allow_html=True
+    )
+    
+    # Display the table with HTML rendering
+    st.markdown(df.to_html(escape=False, index=False), unsafe_allow_html=True)
+
+
 # Main function to run the Streamlit app
 def main():
-    st.title("Main Page")
-    st.write("This is the main content of the page.")
+    st.title("TITLE")
+    global number_of_companies
+    number_of_companies = 4
     slidable_menu()
     
     if main_option == "Overall":
-        st.write("You have selected the Overall option.")
-        n = 4  # Replace with the desired number of lines
-        
-        df = create_table(n)
-
-        # Apply custom CSS to style the table
-        st.markdown(
-            """
-            <style>
-            .dataframe {
-                border: 2px solid #000;
-                border-radius: 10px;
-                overflow: hidden;
-                width: 100%;
-                margin: 50px 0;
-                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            }
-            .dataframe th, .dataframe td {
-                padding: 12px;
-                text-align: center;
-                border-bottom: 1px solid #ddd;
-            }
-            .dataframe th {
-                background-color: yellow;
-                color: white;
-                font-weight: bold;
-            }
-            .dataframe tr:nth-child(even) {
-                background-color: #f2f2f2;
-            }
-            .dataframe tr:hover {
-                background-color: #ddd;
-            }
-            </style>
-            """,
-            unsafe_allow_html=True
-        )
-        
-        # Display the table with HTML rendering
-        st.markdown(df.to_html(escape=False), unsafe_allow_html=True)
-
+        show_table()
         
 
 if __name__ == "__main__":
