@@ -196,10 +196,10 @@ def show_chatbox():
 def add_company(company):
     global showed_companies
     global number_of_showed_companies
-    for i in range(number_of_showed_companies):
-        if companies[i]["Company"] == company:
-            showed_companies.append(companies[i])
-            show_table()
+    for elem in companies:
+        if elem["Company"] == company:
+            showed_companies.append(elem)
+            number_of_showed_companies += 1
             break
 
 
