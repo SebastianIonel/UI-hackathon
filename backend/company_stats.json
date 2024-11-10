@@ -1,0 +1,277 @@
+[
+  {
+    "id": 1,
+    "Company": "Samsung",
+    "Info": {
+      "number_of_employees": 1500,
+      "industry": "Technology"
+    },
+    "Financials": {
+      "2021": {
+        "Revenue": 5200000,
+        "COGS": 2500000,
+        "Operating_Income": 1500000,
+        "Net_Income": 1100000,
+        "Interest_Expense": 43000,
+        "Taxes": 270000,
+        "Depreciation": 160000,
+        "Amortization": 53000,
+        "Total_Assets": 12150000,
+        "Current_Assets": 4700000,
+        "Current_Liabilities": 1050000,
+        "Total_Liabilities": 3700000,
+        "Shareholders_Equity": 8450000
+      },
+      "2022": {
+        "Revenue": 5300000,
+        "COGS": 2900000,
+        "Operating_Income": 1250000,
+        "Net_Income": 950000,
+        "Interest_Expense": 53000,
+        "Taxes": 310000,
+        "Depreciation": 165000,
+        "Amortization": 57000,
+        "Total_Assets": 13050000,
+        "Current_Assets": 5100000,
+        "Current_Liabilities": 1150000,
+        "Total_Liabilities": 4100000,
+        "Shareholders_Equity": 8950000
+      },
+      "2023": {
+        "Revenue": 5100000,
+        "COGS": 3400000,
+        "Operating_Income": 1100000,
+        "Net_Income": 750000,
+        "Interest_Expense": 62000,
+        "Taxes": 280000,
+        "Depreciation": 170000,
+        "Amortization": 60000,
+        "Total_Assets": 12900000,
+        "Current_Assets": 5400000,
+        "Current_Liabilities": 1250000,
+        "Total_Liabilities": 4500000,
+        "Shareholders_Equity": 8400000
+      }
+    }
+  },
+  {
+    "id": 2,
+    "Company": "Regina Maria",
+    "Info": {
+      "number_of_employees": 800,
+      "industry": "Healthcare"
+    },
+    "Financials": {
+      "2021": {
+        "Revenue": 3800000,
+        "COGS": 1600000,
+        "Operating_Income": 850000,
+        "Net_Income": 630000,
+        "Interest_Expense": 27000,
+        "Taxes": 210000,
+        "Depreciation": 95000,
+        "Amortization": 42000,
+        "Total_Assets": 8800000,
+        "Current_Assets": 2950000,
+        "Current_Liabilities": 770000,
+        "Total_Liabilities": 2400000,
+        "Shareholders_Equity": 6400000
+      },
+      "2022": {
+        "Revenue": 4500000,
+        "COGS": 1800000,
+        "Operating_Income": 1050000,
+        "Net_Income": 750000,
+        "Interest_Expense": 37000,
+        "Taxes": 240000,
+        "Depreciation": 102000,
+        "Amortization": 46000,
+        "Total_Assets": 9700000,
+        "Current_Assets": 3200000,
+        "Current_Liabilities": 800000,
+        "Total_Liabilities": 2600000,
+        "Shareholders_Equity": 7100000
+      },
+      "2023": {
+        "Revenue": 5200000,
+        "COGS": 2100000,
+        "Operating_Income": 1150000,
+        "Net_Income": 800000,
+        "Interest_Expense": 45000,
+        "Taxes": 290000,
+        "Depreciation": 108000,
+        "Amortization": 50000,
+        "Total_Assets": 10200000,
+        "Current_Assets": 3400000,
+        "Current_Liabilities": 850000,
+        "Total_Liabilities": 2800000,
+        "Shareholders_Equity": 7400000
+      }
+    }
+  },
+  {
+    "id": 3,
+    "Company": "Lidl",
+    "Info": {
+      "number_of_employees": 3000,
+      "industry": "Consumer Goods"
+    },
+    "Financials": {
+      "2021": {
+        "Revenue": 8100000,
+        "COGS": 5100000,
+        "Operating_Income": 1550000,
+        "Net_Income": 1230000,
+        "Interest_Expense": 105000,
+        "Taxes": 310000,
+        "Depreciation": 205000,
+        "Amortization": 77000,
+        "Total_Assets": 15100000,
+        "Current_Assets": 6100000,
+        "Current_Liabilities": 1550000,
+        "Total_Liabilities": 5100000,
+        "Shareholders_Equity": 10050000
+      },
+      "2022": {
+        "Revenue": 8700000,
+        "COGS": 5300000,
+        "Operating_Income": 1700000,
+        "Net_Income": 1320000,
+        "Interest_Expense": 115000,
+        "Taxes": 340000,
+        "Depreciation": 210000,
+        "Amortization": 81000,
+        "Total_Assets": 16000000,
+        "Current_Assets": 6550000,
+        "Current_Liabilities": 1650000,
+        "Total_Liabilities": 5500000,
+        "Shareholders_Equity": 10750000
+      },
+      "2023": {
+        "Revenue": 9300000,
+        "COGS": 5500000,
+        "Operating_Income": 1850000,
+        "Net_Income": 1500000,
+        "Interest_Expense": 130000,
+        "Taxes": 380000,
+        "Depreciation": 215000,
+        "Amortization": 86000,
+        "Total_Assets": 17550000,
+        "Current_Assets": 7100000,
+        "Current_Liabilities": 1750000,
+        "Total_Liabilities": 6000000,
+        "Shareholders_Equity": 11500000
+      }
+    }
+  },
+  {
+    "id": 4,
+    "Company": "Enel",
+    "Info": {
+      "number_of_employees": 5000,
+      "industry": "Energy"
+    },
+    "Financials": {
+      "2021": {
+        "Revenue": 12200000,
+        "COGS": 7600000,
+        "Operating_Income": 2100000,
+        "Net_Income": 1550000,
+        "Interest_Expense": 210000,
+        "Taxes": 460000,
+        "Depreciation": 310000,
+        "Amortization": 105000,
+        "Total_Assets": 25200000,
+        "Current_Assets": 9600000,
+        "Current_Liabilities": 3100000,
+        "Total_Liabilities": 12150000,
+        "Shareholders_Equity": 13050000
+      },
+      "2022": {
+        "Revenue": 12500000,
+        "COGS": 7900000,
+        "Operating_Income": 2050000,
+        "Net_Income": 1450000,
+        "Interest_Expense": 270000,
+        "Taxes": 490000,
+        "Depreciation": 360000,
+        "Amortization": 115000,
+        "Total_Assets": 25800000,
+        "Current_Assets": 10000000,
+        "Current_Liabilities": 3200000,
+        "Total_Liabilities": 12800000,
+        "Shareholders_Equity": 13000000
+      },
+      "2023": {
+        "Revenue": 12700000,
+        "COGS": 8500000,
+        "Operating_Income": 1900000,
+        "Net_Income": 1400000,
+        "Interest_Expense": 340000,
+        "Taxes": 530000,
+        "Depreciation": 400000,
+        "Amortization": 120000,
+        "Total_Assets": 26800000,
+        "Current_Assets": 10500000,
+        "Current_Liabilities": 3300000,
+        "Total_Liabilities": 13600000,
+        "Shareholders_Equity": 13200000
+      }
+    }
+  },
+  {
+    "id": 5,
+    "Company": "Revolut",
+    "Info": {
+      "number_of_employees": 2200,
+      "industry": "Financial Services"
+    },
+    "Financials": {
+      "2021": {
+        "Revenue": 6700000,
+        "COGS": 4200000,
+        "Operating_Income": 1050000,
+        "Net_Income": 890000,
+        "Interest_Expense": 75000,
+        "Taxes": 260000,
+        "Depreciation": 125000,
+        "Amortization": 63000,
+        "Total_Assets": 14100000,
+        "Current_Assets": 5100000,
+        "Current_Liabilities": 1250000,
+        "Total_Liabilities": 4300000,
+        "Shareholders_Equity": 9800000
+      },
+      "2022": {
+        "Revenue": 7300000,
+        "COGS": 4800000,
+        "Operating_Income": 1150000,
+        "Net_Income": 930000,
+        "Interest_Expense": 83000,
+        "Taxes": 280000,
+        "Depreciation": 140000,
+        "Amortization": 65000,
+        "Total_Assets": 15100000,
+        "Current_Assets": 5400000,
+        "Current_Liabilities": 1350000,
+        "Total_Liabilities": 4600000,
+        "Shareholders_Equity": 10500000
+      },
+      "2023": {
+        "Revenue": 7600000,
+        "COGS": 5000000,
+        "Operating_Income": 1300000,
+        "Net_Income": 1050000,
+        "Interest_Expense": 91000,
+        "Taxes": 310000,
+        "Depreciation": 160000,
+        "Amortization": 68000,
+        "Total_Assets": 15800000,
+        "Current_Assets": 5800000,
+        "Current_Liabilities": 1450000,
+        "Total_Liabilities": 4900000,
+        "Shareholders_Equity": 10900000
+      }
+    }
+  }
+]
