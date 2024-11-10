@@ -7,6 +7,7 @@ def send_message():
         st.session_state["chat_history"].append(f"ChatGPT: Your message '{user_input}' was received!")
         st.session_state["input"] = ""  # Clear the input field after sending
 
+
 def show_chatbox():
     # Initialize session state for storing chat messages if not already initialized
     if "chat_history" not in st.session_state:
@@ -16,14 +17,14 @@ def show_chatbox():
     st.markdown("<h3 style='text-align: center;'>Chat Box</h3>", unsafe_allow_html=True)
 
     # Placeholder for chat history, placed above the input box
-    chat_history_placeholder = st.empty()    
+    chat_history_placeholder = st.empty()
 
     # User input and send button
     user_input = st.text_input("Start conversation", key="text_input_for_chat", autocomplete="off")
     col1, col2 = st.columns([1, 1])
     
     with col1:
-        if (st.button("Send") or user_input):
+        if (st.button("Send")):
             send_message()
 
     with col2:
