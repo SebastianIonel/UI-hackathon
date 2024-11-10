@@ -7,18 +7,22 @@ def send_message(id):
     user_input = st.session_state["text_input_for_chat"]
     if user_input:
         info = ai(f'{id}', user_input)
-        if 'error' in json.loads(info.text).keys():
-            print("MAX TRIES EXCEEDED")
-            st.write("MAX TRIES EXCEEDED")
+        if info == None:
+            st.session_state["chat_history"].append(f"<b>Error</b>: Please try again.")
+            st.session_state["input"] = ""  # Clear the input field after sending
         else:
-            response = json.loads(info.text)['response']
-            st.session_state["chat_history"].append(f"You: {user_input}")
-            if id == None:
-                st.session_state["chat_history"].append(f"ChatGPT: {response}")
+            if 'error' in json.loads(info.text).keys():
+                st.session_state["chat_history"].append(f"<b>Error</b>: Max tried exceeded.")
                 st.session_state["input"] = ""  # Clear the input field after sending
             else:
-                st.session_state["chat_history"].append(f"ChatGPT: {response}")
-                st.session_state["input"] = ""  # Clear the input field after sending
+                response = json.loads(info.text)['response']
+                st.session_state["chat_history"].append(f"<b>You</b>: {user_input}")
+                if id == None:
+                    st.session_state["chat_history"].append(f"<b>Assistant</b>: <b>{response}</b>")
+                    st.session_state["input"] = ""  # Clear the input field after sending
+                else:
+                    st.session_state["chat_history"].append(f"<b>Assistant</b>: {response}")
+                    st.session_state["input"] = ""  # Clear the input field after sending
 
 
 

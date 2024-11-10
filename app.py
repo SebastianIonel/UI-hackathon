@@ -76,8 +76,6 @@ def create_table(show_input):
     return pd.DataFrame(data)
 
 def show_table(option):
-    st.write("You have selected the Followed option.")
-    
     if option == "Followed":
         green, red = get_companies_color()
         df = create_table(st.session_state["showed_companies"])
@@ -147,7 +145,7 @@ def add_company(company):
             break
 
 def main():
-    st.title("TITLE")
+    st.title(f"Raiffeisen AI Assistant")
     bulk()
     get_companies()
     slidable_menu()

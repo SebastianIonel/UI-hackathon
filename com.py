@@ -34,6 +34,7 @@ def chat_implementation(id, user_question):
     }
     try:
         response = requests.post(url, json=payload)
+        return response
     except requests.RequestException as e:
         print(f"An error occurred: {e}")
-    return response
+        return None
