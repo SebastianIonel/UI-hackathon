@@ -4,12 +4,12 @@ import pandas as pd
 import json
 import re
 from key import generate_key
-
+from com import com_info
 
 
 def show_revenue_net_income_chart():
-    # Load data from info.json
-    with open('info.json', 'r') as file:
+    # Load data from text.json
+    with open('text.json', 'r') as file:
         data = json.load(file)
 
     # Extract relevant data for the chart
@@ -30,8 +30,8 @@ def show_revenue_net_income_chart():
 
 # Function to show the profit margins chart
 def show_profit_margins_chart():
-    # Load data from info.json
-    with open('info.json', 'r') as file:
+    # Load data from text.json
+    with open('text.json', 'r') as file:
         data = json.load(file)
 
     # Extract relevant data for the chart
@@ -57,8 +57,8 @@ def show_profit_margins_chart():
     st.plotly_chart(fig, key=generate_key())
 
 def show_liquidity_leverage_chart():
-    # Load data from info.json
-    with open('info.json', 'r') as file:
+    # Load data from text.json
+    with open('text.json', 'r') as file:
         data = json.load(file)
 
     # Extract relevant data for the chart

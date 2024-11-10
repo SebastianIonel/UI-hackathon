@@ -1,14 +1,28 @@
 import streamlit as st
+from com import chat_implementation as ai
+import json
 
-def send_message():
+def send_message(id):
+    st.session_state["chat_history"] = []
     user_input = st.session_state["text_input_for_chat"]
     if user_input:
-        st.session_state["chat_history"].append(f"You: {user_input}")
-        st.session_state["chat_history"].append(f"ChatGPT: Your message '{user_input}' was received!")
-        st.session_state["input"] = ""  # Clear the input field after sending
+        info = ai(f'{id}', user_input)
+        if 'error' in json.loads(info.text).keys():
+            print("MAX TRIES EXCEEDED")
+            st.write("MAX TRIES EXCEEDED")
+        else:
+            response = json.loads(info.text)['response']
+            st.session_state["chat_history"].append(f"You: {user_input}")
+            if id == None:
+                st.session_state["chat_history"].append(f"ChatGPT: {response}")
+                st.session_state["input"] = ""  # Clear the input field after sending
+            else:
+                st.session_state["chat_history"].append(f"ChatGPT: {response}")
+                st.session_state["input"] = ""  # Clear the input field after sending
 
 
-def show_chatbox():
+
+def show_chatbox(id):
     # Initialize session state for storing chat messages if not already initialized
     if "chat_history" not in st.session_state:
         st.session_state["chat_history"] = []
@@ -25,7 +39,7 @@ def show_chatbox():
     
     with col1:
         if (st.button("Send")):
-            send_message()
+            send_message(id)
 
     with col2:
         if st.button("Clear History"):

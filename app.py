@@ -151,13 +151,20 @@ def main():
     bulk()
     get_companies()
     slidable_menu()
-    show_chatbox()
+
+    id = 'general'
     if st.session_state["main_option"] == "Followed" or st.session_state["main_option"] == "All":
         show_table(st.session_state["main_option"])
     if st.session_state["main_option"] != "Followed" and st.session_state["main_option"] != "All":
         # call api for st.session_state["main_option"]
         # write answer in info.json 
-        show_all_info()
-    
+        for name in st.session_state["companies"]:
+            if name['Company'] == st.session_state["main_option"]:
+                id = name['id']
+                com_info(id)
+                show_all_info()
+                
+    show_chatbox(id)
+
 if __name__ == "__main__":
     main()

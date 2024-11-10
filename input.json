@@ -1,30 +1,47 @@
 [
-  {
-  "Company": "Company_D",
-  "Description": "Company_D has shown consistent revenue growth and maintains a healthy gross profit margin. However, its debt-to-equity ratio is relatively high, indicating a higher level of financial leverage. The company is in a stable position but should monitor its debt levels closely.",
-  "NEmployees": 5000,
-  "RiskClass": "High Risk",
-  "Score": -70
-  },
-  {
-  "Company": "Company_C",
-  "Description": "Company_C has demonstrated steady revenue growth and improving profit margins. The company's financial ratios indicate a stable and growing business, though it should continue to manage its debt levels to maintain financial health.",
-  "NEmployees": 3000,
-  "RiskClass": "Medium Risk",
-  "Score": -50
-  },
-  {
-  "Company": "Company_B",
-  "Description": "Company_B has shown consistent revenue growth and strong profit margins. The company's financial ratios indicate a stable and healthy business with manageable debt levels. It is well-positioned for future growth.",
-  "NEmployees": 800,
-  "RiskClass": "Medium Opportunity",
-  "Score": 50
-  },
-  {
-  "Company": "Company_A",
-  "Description": "Company_A has demonstrated strong revenue growth and maintains healthy profit margins. The company's financial ratios indicate a stable and growing business with manageable debt levels. It is well-positioned for future growth.",
-  "NEmployees": 1500,
-  "RiskClass": "High Opportunity",
-  "Score": 70
-  }
-  ]
+    {
+        "Company": "Samsung",
+        "Description": "Samsung has shown a decline in revenue growth and profitability margins over the past three years. The company maintains a strong current ratio and manageable debt levels, but the decreasing net income and return on equity indicate potential financial instability.",
+        "Industry": "Technology",
+        "NEmployees": 1500,
+        "RiskClass": "High Risk",
+        "Score": -60,
+        "id": 1
+    },
+    {
+        "Company": "Enel",
+        "Description": "Enel's financial performance has been relatively stable, though there is a slight decline in profitability margins. The company has a high debt-to-equity ratio, which could pose a risk if not managed properly. Overall, Enel is in a moderate risk category.",
+        "Industry": "Energy",
+        "NEmployees": 5000,
+        "RiskClass": "Medium Risk",
+        "Score": -40,
+        "id": 4
+    },
+    {
+        "Company": "Regina Maria",
+        "Description": "Regina Maria has demonstrated consistent revenue growth and stable profitability margins. The company maintains a strong current ratio and low debt levels, indicating good financial health and low risk.",
+        "Industry": "Healthcare",
+        "NEmployees": 800,
+        "RiskClass": "Low Opportunity",
+        "Score": 40,
+        "id": 2
+    },
+    {
+        "Company": "Revolut",
+        "Description": "Revolut has shown steady revenue growth and improving profitability margins. The company maintains a strong current ratio and manageable debt levels, indicating good financial health and moderate opportunity for growth.",
+        "Industry": "Financial Services",
+        "NEmployees": 2200,
+        "RiskClass": "High Opportunity",
+        "Score": 70,
+        "id": 5
+    },
+    {
+        "Company": "Lidl",
+        "Description": "Lidl has demonstrated consistent revenue growth and stable profitability margins. The company maintains a strong current ratio and manageable debt levels, indicating good financial health and low risk.",
+        "Industry": "Consumer Goods",
+        "NEmployees": 3000,
+        "RiskClass": "Medium Opportunity",
+        "Score": 60,
+        "id": 3
+    }
+]
