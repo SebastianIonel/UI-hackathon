@@ -1,17 +1,52 @@
-    
-    st.markdown("""
-    \n\n# Financial Health Evaluation Report for Company_A\n\n## Executive Summary\n\nCompany_A, a technology firm with 1,500 employees, has demonstrated consistent growth and profitability over the past three years. This report provides a comprehensive analysis of the company's financial health, focusing on profitability, liquidity, efficiency, and leverage. The analysis identifies key strengths and weaknesses and offers recommendations to mitigate potential risks.\n\n## Financial Performance Analysis\n\n### Profitability\n\n#### Revenue Growth\nCompany_A has shown a steady increase in revenue over the past three years:\n- 2021: $5,200,000\n- 2022: $5,900,000 (13.46% growth)\n- 2023: $6,700,000 (13.56% growth)\n\n#### Gross Profit Margin\nThe gross profit margin has remained relatively stable:\n- 2021: 51.92%\n- 2022: 50.85%\n- 2023: 50.75%\n\n#### Operating Margin\nThe operating margin has slightly decreased:\n- 2021: 28.85%\n- 2022: 28.81%\n- 2023: 28.36%\n\n#### Net Profit Margin\nThe net profit margin has also seen a slight decline:\n- 2021: 21.15%\n- 2022: 20.34%\n- 2023: 20.15%\n\n#### EBITDA\nEarnings Before Interest, Taxes, Depreciation, and Amortization (EBITDA) has increased:\n- 2021: $1,626,000\n- 2022: $1,785,000\n- 2023: $2,002,000\n\n### Liquidity\n\n#### Current Ratio\nThe current ratio indicates strong liquidity, although it has slightly decreased:\n- 2021: 4.48\n- 2022: 4.43\n- 2023: 4.32\n\n### Efficiency\n\n#### Return on Assets (ROA)\nROA has shown a positive trend:\n- 2021: 9.05%\n- 2022: 9.20%\n- 2023: 9.54%\n\n#### Return on Equity (ROE)\nROE has also improved:\n- 2021: 13.02%\n- 2022: 13.41%\n- 2023: 13.99%\n\n### Leverage\n\n#### Debt-to-Equity Ratio\nThe debt-to-equity ratio has increased slightly, indicating a higher reliance on debt:\n- 2021: 0.44\n- 2022: 0.46\n- 2023: 0.47\n\n## Key Strengths\n\n1. *Consistent Revenue Growth: Company_A has demonstrated strong revenue growth, with an average annual increase of approximately 13.5% over the past three years. This indicates a robust demand for its products and services.\n\n2. **Strong Liquidity Position: The company maintains a high current ratio, consistently above 4.0, which suggests that it has more than enough current assets to cover its current liabilities. This strong liquidity position reduces the risk of short-term financial distress.\n\n3. **Improving Efficiency: Both ROA and ROE have shown positive trends, indicating that the company is effectively utilizing its assets and equity to generate profits. This improvement in efficiency is a positive indicator of management's ability to enhance operational performance.\n\n## Significant Weaknesses\n\n1. **Declining Profit Margins: Despite revenue growth, both the operating and net profit margins have slightly declined over the past three years. This could indicate rising costs or increased competition, which may pressure profitability.\n\n2. **Increasing Leverage: The debt-to-equity ratio has been gradually increasing, suggesting a higher reliance on debt financing. While the current levels are not alarming, continued increases could pose a risk to financial stability, especially if interest rates rise.\n\n3. **Stagnant Gross Profit Margin: The gross profit margin has remained relatively flat, indicating that the company may not be effectively managing its cost of goods sold (COGS). This stagnation could limit the potential for higher profitability in the future.\n\n## Recommendations\n\n1. **Cost Management Strategies: To address the declining profit margins, Company_A should implement cost management strategies. This could include negotiating better terms with suppliers, optimizing production processes, and reducing operational inefficiencies.\n\n2. **Debt Management: The company should focus on managing its debt levels to prevent further increases in the debt-to-equity ratio. This could involve refinancing existing debt at lower interest rates, reducing discretionary spending, and prioritizing debt repayment.\n\n3. **Enhancing Gross Profit Margin*: Company_A should explore ways to improve its gross profit margin. This could involve introducing higher-margin products, increasing prices where feasible, and improving supply chain efficiencies.\n\n## Conclusion\n\nCompany_A has shown strong financial performance with consistent revenue growth, strong liquidity, and improving efficiency. However, the company faces challenges related to declining profit margins, increasing leverage, and stagnant gross profit margins. By implementing cost management strategies, focusing on debt management, and enhancing its gross profit margin, Company_A can mitigate these risks and continue to strengthen its financial position.\n\n## Charts\n\n### Revenue Growth (2021-2023)
-    \n""")
+import streamlit as st
+import pandas as pd
 
-    show_revenue_net_income_chart()
+def create_table_with_styling(show_input):
+    # Sort data
+    sorted_showed = sorted(show_input, key=lambda x: x["Score"], reverse=True)
     
-    st.markdown("""\n\n### Profit Margins (2021-2023)
-    \n""")
-
-    show_profit_margins_chart()
+    # Create CSS style for each row
+    row_styles = []
+    for i, row in enumerate(sorted_showed):
+        color = "#d1e7dd" if i % 2 == 0 else "#f8d7da"  # Alternating row colors
+        row_styles.append(
+            f"""
+            <style>
+            .row-{i} {{
+                background-color: {color};
+                padding: 10px;
+                border-radius: 5px;
+                margin-bottom: 5px;
+            }}
+            </style>
+            """
+        )
     
-    st.markdown("""\n\n### Liquidity and Leverage Ratios (2021-2023)
-    \n
-    """)
+    # Render each row with custom HTML and CSS
+    for i, row in enumerate(sorted_showed):
+        st.markdown(row_styles[i], unsafe_allow_html=True)  # Inject CSS for each row
+        st.markdown(
+            f"""
+            <div class="row-{i}">
+                <strong>Name:</strong> {row['Company']} <br>
+                <strong>Score:</strong> {row['Score']} <br>
+                <strong>Description:</strong> {row['Description']} <br>
+                <strong>Risk Class:</strong> {row['RiskClass']} <br>
+            </div>
+            """,
+            unsafe_allow_html=True,
+        )
+        
+        # Display button
+        if st.button("Select", key=f"btn_{i}"):
+            st.write(f"Selected {row['Company']}")  # Your action here
 
-    show_liquidity_leverage_chart()
+# Sample data
+show_input = [
+    {"Company": "Company A", "Score": 90, "Description": "High performance", "RiskClass": "Low"},
+    {"Company": "Company B", "Score": 75, "Description": "Moderate performance", "RiskClass": "Medium"},
+    {"Company": "Company C", "Score": 65, "Description": "Low performance", "RiskClass": "High"},
+]
+
+# Call the function
+create_table_with_styling(show_input)

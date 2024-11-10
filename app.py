@@ -72,7 +72,6 @@ def create_table(show_input):
         "Score": [f"{c['Score']}" for c in sorted_showed],
         "Description": [f"{c['Description']}" for c in sorted_showed],
         "RiskClass": [f"{c['RiskClass']}" for c in sorted_showed],
-    
     }
     return pd.DataFrame(data)
 
@@ -116,6 +115,16 @@ def show_table(option):
     }}
     </style>
     """
+
+    # Create columns for buttons
+    if len(st.session_state["showed_companies"]) != 0:
+        st.write("Select a company:")
+        cols = st.columns(len(st.session_state["showed_companies"]))
+        for idx, company in enumerate(st.session_state["showed_companies"]):
+            if cols[idx].button(company["Company"]):
+                st.session_state["main_option"] = company['Company']
+                st.write(f"{company['Company']} selected!")  # Action for the selected company
+
     st.markdown(css, unsafe_allow_html=True)
     st.markdown(df.to_html(escape=False, index=False), unsafe_allow_html=True)
 
@@ -143,7 +152,7 @@ def main():
     show_chatbox()
     if st.session_state["main_option"] == "Followed" or st.session_state["main_option"] == "All":
         show_table(st.session_state["main_option"])
-    else:
+    if st.session_state["main_option"] != "Followed" and st.session_state["main_option"] != "All":
         # call api for st.session_state["main_option"]
         # write answer in info.json 
         show_all_info()
