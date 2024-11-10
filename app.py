@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 import json
-
+from com import *
 from graphs import *
 from chat import *
 
@@ -130,6 +130,7 @@ def show_table(option):
 
 def get_companies():
     file_path = 'input.json'
+
     try:
         with open(file_path, 'r') as file:
             st.session_state["companies"] = json.load(file)
@@ -147,6 +148,7 @@ def add_company(company):
 
 def main():
     st.title("TITLE")
+    bulk()
     get_companies()
     slidable_menu()
     show_chatbox()
