@@ -65,8 +65,8 @@ def get_companies_color():
             red += 1
     return green, red
 
-def create_table(show_input):
-    sorted_showed = sorted(show_input, key=lambda x: x["Score"], reverse=True)
+def create_table(show_input, use_abs):
+    sorted_showed = sorted(show_input, key=lambda x: abs(x["Score"]) if use_abs else x["Score"], reverse=True)
     data = {
         "Name": [f"<b>{c['Company']}</b>" for c in sorted_showed],
         "Score": [f"{c['Score']}" for c in sorted_showed],
@@ -78,10 +78,10 @@ def create_table(show_input):
 def show_table(option):
     if option == "Followed":
         green, red = get_companies_color()
-        df = create_table(st.session_state["showed_companies"])
+        df = create_table(st.session_state["showed_companies"], False)
     else: 
         green, red = 0, 0
-        df = create_table(st.session_state["companies"])
+        df = create_table(st.session_state["companies"], True)
     
     css = f"""
     <style>
